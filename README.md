@@ -11,28 +11,30 @@ A production-ready **Autonomous AI Agent** built with **LangGraph** and **FastAP
 
 The system uses a **Cognitive Architecture** where the LLM (Gemini) acts as the brain, maintaining state across multiple turns of execution.
 
-```mermaid
 graph TD
     User[User / API Request] -->|POST /run-agent| API[FastAPI Endpoint]
-    API -->|Initialize State| Agent[Agent Node Gemini 2.5]
+    API -->|Initialize State| Agent["Agent Node (Gemini 2.5)"]
     
     Agent -->|Decision| Router{Tools Needed?}
     
     Router -->|Yes| Tools[Tool Node]
     Router -->|No| End[Final Response]
     
-    Tools -->|Web Search Tavily| Internet((Internet))
+    Tools -->|Web Search (Tavily)| Internet((Internet))
     Tools -->|Save Report| FileSys[(File System)]
     
     Tools -->|Update State| Agent
     
-    subgraph CyclicLoop[Cyclic Execution Loop]
+    subgraph CyclicLoop [Cyclic Execution Loop]
+    direction TB
     Agent
     Router
     Tools
     end
-```
-
+    
+    style CyclicLoop fill:#e1f5fe,stroke:#01579b,stroke-dasharray: 5 5
+    style Agent fill:#fff9c4,stroke:#fbc02d
+    style Tools fill:#ffccbc,stroke:#ff5722
 ## 🚀 Key Features
 
 - **Cyclic Reasoning Loop**: Uses LangGraph to enable multi-step workflows (e.g., "Search -> Read -> Search Again -> Answer").
