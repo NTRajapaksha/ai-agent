@@ -14,19 +14,19 @@ The system uses a **Cognitive Architecture** where the LLM (Gemini) acts as the 
 ```mermaid
 graph TD
     User[User / API Request] -->|POST /run-agent| API[FastAPI Endpoint]
-    API -->|Initialize State| Agent[Agent Node (Gemini 2.5)]
+    API -->|Initialize State| Agent[Agent Node Gemini 2.5]
     
     Agent -->|Decision| Router{Tools Needed?}
     
     Router -->|Yes| Tools[Tool Node]
     Router -->|No| End[Final Response]
     
-    Tools -->|Web Search (Tavily)| Internet((Internet))
+    Tools -->|Web Search Tavily| Internet((Internet))
     Tools -->|Save Report| FileSys[(File System)]
     
     Tools -->|Update State| Agent
     
-    subgraph "Cyclic Execution Loop"
+    subgraph CyclicLoop[Cyclic Execution Loop]
     Agent
     Router
     Tools
