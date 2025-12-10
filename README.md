@@ -58,8 +58,8 @@ graph TD
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/ai-agent-framework.git
-cd ai-agent-framework
+git clone https://github.com/NTRajapaksha/ai-agent.git
+cd ai-agent
 ```
 
 ### 2. Environment Setup
